@@ -40,7 +40,7 @@ int main()
     	getline(file_in, content_line);
     	istringstream string_in(content_line);
         // skip blank lines
-        if (content_line != "\0")
+        if (!content_line.empty())
         {
         	vector<string> vars;
         	string var;
