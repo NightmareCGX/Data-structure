@@ -27,37 +27,25 @@ NvraArray::~NvraArray(){
 // adds record, increments size, doubles capacity as necessary
 void NvraArray::add(NvraRecord* record){
     
-    int ind_num = 0, ind_str = 0;
-    
-    for (int ind = 0; ind < 24; ++ind){
-        
-        if (ind != 3 && ind != 11 && ind != 12){
-            this->data[this->size].addNum(record->getNum(ind_num));
-            ++ind_num;
-        }
-        else{
-            this->data[this->size].addString(record->getString(ind_str));
-            ++ind_str;
-        }
-        
-    }
+    this->data[this->size] = *record;
     
 	this->size += 1;
+    
 	if (this->size == this->capacity){
-		
-		NvraArray* tempArray = new NvraArray(this->capacity*2);
-		
-	    for (int i = 0; i< this->capacity; ++i){
-            
-			tempArray->data[i] = this->data[i];
-			
-	    }
-		
-		this->~NvraArray();
-		this->capacity *= 2;
+	    
+        NvraArray* tempArray = new NvraArray(this->capacity*2);
+    
+        for (int i = 0; i< this->capacity; ++i){
+    
+            tempArray->data[i] = this->data[i];
+        }
+    
+        this->~NvraArray();
+        this->capacity *= 2;
         this->data = tempArray->data;
-		
+        
 	}
+    
 }
 
 

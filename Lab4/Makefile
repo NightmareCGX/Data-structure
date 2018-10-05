@@ -11,14 +11,13 @@ CXXFLAGS = --std=c++11 -xCORE-AVX2 -O3
 	$(CXX) $(CXXFLAGS) -c $<
 
 VOTEREXE = VoteR
-MAINOBJS = NvraRecord.o NvraArray.o VoteR.o
+MAINOBJS = NvraRecord.o VoteR.o
 
 $(VOTEREXE): $(MAINOBJS)
 	$(CXX) $(CXXFLAGS) -o $(VOTEREXE) $(MAINOBJS)
 
-NvraRecord.o: NvraRecord.cpp NvraRecord.h
-NvraArray.o: NvraArray.cpp NvraArray.h NvraRecord.o
-VoteR.o: VoteR.cpp NvraArray.o NvraRecord.o
+NvraRecord.o: NvraRecord.cpp NvraRecord.h Exceptions.h
+VoteR.o: VoteR.cpp NvraRecord.o TemplatedArray.h Exceptions.h
 
 .PHONY: clean
 clean:

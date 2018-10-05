@@ -1,7 +1,7 @@
 /*   
  *   Program  for reading, filtering and writing data in reverse order
  *   Author:  Sijie Pan
- *   Date:    Sep. 3, 2018
+ *   Date:    Sep. 11, 2018
  *   Version: 0.2
  *   Purpose:
  *   1. read and write data
@@ -166,6 +166,8 @@ int main()
     destroy_NvraArray(currentNvraArray);
     delete currentNvraArray;
     currentNvraArray = nullptr;
+
+    return 0;
     
 }
 

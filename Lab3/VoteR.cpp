@@ -1,14 +1,13 @@
 /*   
  *   Program  for reading, filtering and writing data in reverse order
  *   Author:  Sijie Pan
- *   Date:    Sep. 3, 2018
+ *   Date:    Sep. 30, 2018
  *   Version: 0.3
  *   Purpose:
- *   1. read and write data
- *   2. Use arrays to store the data as it is read in.
- *   3. Allocate and deallocate memory dynamiclly using new and delete.
- *   4. Functionality to be encapsulated with a class.
- *   5. Complete/use the given design elements, including two structures and one function plus main.
+ *   1. Satisfy all requirements of Lab2, except for the requirement to use a function.
+ *   2. Create a class that encapsulates dynamically resized arrays.
+ *   3. Create a class that encapsulates NVRA data.
+ *   4. Use proper design, coding style, documentation, and formatting.
 */
 
 
@@ -56,7 +55,7 @@ int main(){
         if (!each_record.empty() && irow != 0){
             
             std::string var;
-            int icol_int = 0, icol_str = 0, icol = 0;
+            int icol = 0;
             
             // Seperate parameters by commas
             int icol_num = 0;
@@ -119,6 +118,7 @@ int main(){
     
     // deallocate data space.
     currentArray.~NvraArray();
+    return 0;
     
 }
 
