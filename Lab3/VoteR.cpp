@@ -116,8 +116,6 @@ int main(){
         
     }
     
-    // deallocate data space.
-    currentArray.~NvraArray();
     return 0;
     
 }

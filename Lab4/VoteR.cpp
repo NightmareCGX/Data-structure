@@ -25,8 +25,7 @@ using namespace std;
 
 
 // Declaring functions before using.
-bool check_duplication(TemplatedArray<NvraRecord>& currentArray, NvraRecord& currentrecord, 
-                    unsigned long num_records, unsigned long i_records);
+bool check_duplication(TemplatedArray<NvraRecord>& currentArray, NvraRecord& currentrecord, unsigned long i_records);
 bool check_invalid(NvraRecord& currentrecord);
 
 
@@ -57,7 +56,6 @@ int main(){
             unsigned long icol = 0;
             
             // Seperate parameters by commas
-            unsigned long icol_num = 0;
             while (getline(string_in, var, ',')){
                 
                 // Construct current record
@@ -109,7 +107,7 @@ int main(){
                 if (check_invalid(record4print)){
                     std::cout << "Warning: Invalid data at line " << i + 1 << "." << std::endl;
                 }
-                else if (check_duplication(currentArray, record4print, currentArray.getSize() - 1, i)){
+                else if (check_duplication(currentArray, record4print, i)){
                     std::cout << "Warning: Duplicate record ID " << record4print.getNum(0)
                             << " at line " << i + 1 << "." << std::endl;
                 }
@@ -127,8 +125,6 @@ int main(){
         
     }
     
-    // deallocate data space.
-    currentArray.~TemplatedArray();
     return 0;
     
 }
@@ -136,11 +132,10 @@ int main(){
 
 
 // Function for checking if a record is duplicated.
-bool check_duplication(TemplatedArray<NvraRecord>& currentArray, NvraRecord& currentrecord, 
-unsigned long num_records, unsigned long i_records){
+bool check_duplication(TemplatedArray<NvraRecord>& currentArray, NvraRecord& currentrecord, unsigned long i_records){
     
     NvraRecord comprecord;
-    for (unsigned long i = 0; i <= i_records; ++i){
+    for (unsigned long i = 0; i < i_records; ++i){
         
         try{
             comprecord = currentArray.get(i);
